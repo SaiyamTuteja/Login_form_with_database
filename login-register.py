@@ -59,7 +59,7 @@ def register():
                 return redirect(url_for('login'))
             else:
                 flash("Password does not match", "danger")
-                return render_template("register.html")
+                return render_template("feedback.html")
         else:
             flash("Username is taken, please use another", "danger")
             return render_template("feedback.html")

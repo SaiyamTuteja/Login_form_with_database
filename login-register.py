@@ -13,7 +13,7 @@ mysql = MySQL(app)
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    return render_template("loginform.html")
     
 @app.route("/login", methods=["GET","POST"])
 def login():
@@ -28,21 +28,21 @@ def login():
         if res:
             if pswd == res['password']:
                 #flash("You are logged in","success")
-                return render_template("profile.html") 
+                return render_template("loginform.html") 
             else:
                 flash("Incorrect Password","danger")
-                return render_template("login.html")
+                return render_template("loginform.html")
         else:
             flash("Username does not exist","danger")
-            return render_template("login.html")
+            return render_template("loginform.html")
     else: 
-        return render_template("login.html")
+        return render_template("loginform.html")
 
 
 @app.route("/register", methods=["GET","POST"])
 def register():
     if request.method == 'GET':
-        return render_template("register.html")
+        return render_template("feedback.html")
     else:
         name = request.form["name"]
         username = request.form["uname"]
@@ -62,7 +62,7 @@ def register():
                 return render_template("register.html")
         else:
             flash("Username is taken, please use another", "danger")
-            return render_template("register.html")
+            return render_template("feedback.html")
 
 if __name__ == '__main__':
     app.secret_key="asdfg"
